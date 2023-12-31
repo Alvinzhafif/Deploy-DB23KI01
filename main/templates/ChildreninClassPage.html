@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        #back a button {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand d-flex mx-auto justify-content-center">CHILDREN IN CLASS</a>
+    </nav>
+</body>
+    <p>Child Name: {{ class_name }}</p>
+    <p>Year: {{ year }}</p>
+    <p>Total Children in Class : {{ total_children }}</p>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Birthday</th>
+            <th>Enrollment Type</th>
+            <th>Daily Report</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            {% for row_item in row %}
+            <td>{{ row_item.0 }}</td>
+            <td>{{ row_item.1 }}</td>
+            <td>{{ row_item.2 }}</td>
+            <td>{{ row_item.3 }}</td>
+            <td><a href="{% url 'main:ChildrenDailyReport' name=row_item.0 year=year class_name=class_name program_id = program_id%}" placeholder="#"><button type="button">View Daily Report</button></a></td>
+        </tr>
+        <!-- Add more rows as needed -->
+        {% endfor %}
+    </tbody>
+</table>
+<div id="back">
+    <a href="{% url 'main:Class_Page' %}"><button>Back</button></a></div>
+
+</html>

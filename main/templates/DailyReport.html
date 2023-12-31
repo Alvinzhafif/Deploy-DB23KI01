@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Class</th>
+            <th>Date</th>
+            <th>Activity Report</th>
+            <th>Eating Report</th>
+            <th>Photo link</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ row.3 }}</td>  {# Assuming that the class information is in the fourth column (index 3) of your data #}
+            <td>{{ row.4 }}</td>  {# Assuming that the date information is in the fifth column (index 4) of your data #}
+            <td>{{ row.5 }}</td>  {# Assuming that the activity report is in the sixth column (index 5) of your data #}
+            <td>{{ row.6 }}</td>  {# Assuming that the eating report is in the seventh column (index 6) of your data #}
+            <td>{{ row.7 }}</td>  {# Assuming that the photo link is in the eighth column (index 7) of your data #}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<br>
+<div style="text-align: center;">
+    <a href="{% url 'main:User_Dash' %}">
+        <button>Back</button>
+    </a>
+</div>
+
+</body>
+</html>

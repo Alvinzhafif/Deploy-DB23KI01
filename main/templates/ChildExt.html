@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand d-flex mx-auto justify-content-center">EXTRACURRICULAR</a>
+    </nav>
+    <br>    
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Day</th>
+            <th>Hour</th>
+            <th>Operation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+            <td><a href="#">Delete</a></td>
+        </tr>
+        <tr>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+            <td><a href="#">Delete</a></td>
+        </tr>
+        <!-- Add more rows as needed -->
+    </tbody>
+</table>
+<br>
+<form>
+    <label for="extracurricular">Select your extracurricular activity:</label>
+    <select id="extracurricular" name="extracurricular">
+      <option value="music">Music Club</option>
+      <option value="sports">Sports Team</option>
+      <option value="art">Art and Design Society</option>
+      <option value="coding">Coding Club</option>
+      <!-- Add more extracurricular options as needed -->
+    </select>
+<br>
+
+    <input type="submit" value="Add">
+  </form>
+  <br>
+  <br>
+<div style="text-align: center;">
+    <a href="{% url 'main:Program_Page' %}">
+    <button>Back</button>
+    </a>
+</div>
+
+</body>
+</html>

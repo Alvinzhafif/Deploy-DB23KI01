@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+    
+            th, td {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+    
+            th {
+                background-color: #f2f2f2;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand d-flex mx-auto justify-content-center">Class Enrollment</a>
+        </nav>
+        <h5>Available Class: 
+        </h5>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Caregiver</th>
+                    <th>Room Name</th>
+                    <th>Total Participant</th>
+                    <th>Enroll</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Kindergarten-A</td>
+                    <td>Ms. Hayley</td>
+                    <td>Orchid</td>
+                    <td>16/20</td>
+                    <td><a href="{% url 'main:Shuttle_Service_Form' %}">Enroll</a></td>
+                </tr>
+                <tr>
+                    <td>Kindergarten-B</td>
+                    <td>Ms. Maxwell</td>
+                    <td>Sunflower</td>
+                    <td>20/20</td>
+                    <td><a href="{% url 'main:Shuttle_Service_Form' %}">Enroll</a></td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+        <br>
+        <div style="text-align: center;">
+        <a href="{% url 'main:User_Dash' %}">
+        <button>Back</button>
+        </a>
+    </div>
+
+    </body>
+   <h6></h6>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</html>

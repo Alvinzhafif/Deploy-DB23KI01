@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick Up Schedule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Style for the back button */
+        .back-button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pick Up Schedule</h1>
+    <p id="currentDay"></p>
+    
+    <table id="pickupTable">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">Child Name</th>
+                <th onclick="sortTable(1)">Pickup Hour</th>
+                <th onclick="sortTable(2)">Driver Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for schedule in pickup_schedule_data %}
+                <tr>
+                    <td>{{ schedule.0 }}</td>
+                    <td>{{ schedule.1 }}</td>
+                    <td>{{ schedule.2 }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Back button link -->
+    <div class="back-button" onclick="goBack()">BACK</div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        function sortTable(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("pickupTable");
+            switching = true;
+            // Set the sorting direction to ascending:
+            dir = "asc";
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("td")[n];
+                    y = rows[i + 1].getElementsByTagName("td")[n];
+                    if (dir == "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    switchcount ++;
+                } else {
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+
+                // Function to update the current day
+        function updateCurrentDay() {
+            var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            var today = new Date();
+            var currentDay = daysOfWeek[today.getDay()];
+            document.getElementById('currentDay').textContent = 'Current Day: ' + currentDay;
+        }
+
+        // Call the function to update the current day when the page loads
+        window.onload = updateCurrentDay;
+    </script>
+</body>
+</html>

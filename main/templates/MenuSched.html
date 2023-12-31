@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand d-flex mx-auto justify-content-center">ADD MENU SCHEDULE</a>
+    </nav>
+    <br>    
+<form action="{% url 'main:r_menu' name=name year=year %}" method = "POST">
+    {% csrf_token %}
+    <label for="Day">Day: </label>
+<input type="text" id="Day" name="Day">
+<h6>Morning Snack: </h6>
+<br>
+    <label for="Morning_Snack">Menu Name: </label>
+    <select id="Morning_Snack" name="Morning_Snack">
+        {% for row in menu%}
+        <option value="{{row.0}}">{{ row.0 }}</option>
+        <!-- Add more options as needed -->
+        {% endfor %}
+    </select>
+<br>
+<label for="Hour1">Hour: </label>
+<input type="text" id="Hour1" name="Hour1">
+<br>
+<br>
+<h6>Lunch: </h6>
+<label for="Lunch">Menu Name: </label>
+<select id="Lunch" name="Lunch">
+    {% for row in menu%}
+    <option value="{{row.0}}">{{ row.0 }}</option>
+    <!-- Add more options as needed -->
+    {% endfor %}
+    <!-- Add more options as needed -->
+</select>
+<br>
+<label for="Hour2">Hour: </label>
+<input type="text" id="Hour2" name="Hour2">
+<br>
+<br>
+<h6>Afternoon Snack: </h6>
+<label for="Afternoon_Snack">Menu Name: </label>
+<select id="Afternoon_Snack" name="Afternoon_Snack">
+    {% for row in menu%}
+    <option value="{{row.0}}">{{ row.0 }}</option>
+    <!-- Add more options as needed -->
+    {% endfor %}
+    <!-- Add more options as needed -->
+</select>
+<br>
+<label for="Hour3">Hour: </label>
+<input type="text" id="Hour3" name="Hour3">
+<br>
+<br>
+    <input type="submit" value="SAVE">
+</form> 
+</body>
+</html>

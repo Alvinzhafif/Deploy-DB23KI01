@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        #submit {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand d-flex mx-auto justify-content-center">Shuttle Service Form</a>
+    </nav>
+    <br>    
+
+    <form id="shuttleForm" action="#" method="post">
+        <label for="shuttleQuestion">Do you want to use a shuttle service?</label><br>
+        <input type="radio" id="yesOption" name="shuttleChoice" value="yes" required>
+        <label for="yesOption">Yes</label>
+        <input type="radio" id="noOption" name="shuttleChoice" value="no" required>
+        <label for="noOption">No</label><br><br>
+    
+        <div id="driverSelection" style="display: none;">
+          <label for="driverList">Choose your driver:</label>
+          <select id="driverList" name="driver">
+            <option value="driver1">Driver 1</option>
+            <option value="driver2">Driver 2</option>
+          </select><br><br>
+    
+          <label for="pickedUpDays">Picked up days:</label>
+          <input type="text" id="pickedUpDays" name="pickedUpDays"><br><br>
+        </div>
+    
+        <div id="pickupHourSelection" style="display: none;">
+          <label for="pickupHour">Choose your pick-up hour:</label>
+          <select id="pickupHour" name="pickupHour">
+            <option value="8AM">8:00 AM</option>
+            <option value="9AM">9:00 AM</option>
+          </select><br><br>
+        </div>
+    
+        <input type="submit" id="submit" value="Save">
+      </form>
+
+
+
+    <script>
+        document.getElementById('yesOption').addEventListener('change', function() {
+          if (this.checked) {
+            document.getElementById('driverSelection').style.display = 'block';
+            document.getElementById('pickupHourSelection').style.display = 'block';
+          }
+        });
+    
+        document.getElementById('noOption').addEventListener('change', function() {
+          if (this.checked) {
+            document.getElementById('driverSelection').style.display = 'none';
+            document.getElementById('pickupHourSelection').style.display = 'none';
+          }
+        });
+      </script>
+</body>
+</html>

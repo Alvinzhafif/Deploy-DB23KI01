@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand d-flex mx-auto justify-content-center">ADD ACTIVITY SCHEDULE</a>
+    </nav>
+    <br>    
+    <form action="{% url 'main:r_activity' name=name year=year%}" method="POST">
+        {% csrf_token %}
+        <label for="Activity_Name">Activity Name: </label>
+        <select id="Activity_Name" name="Activity_Name">
+            <!-- Use a loop to generate options from the activities list -->
+            {% for activity in act %}
+                <option value="{{ activity.0 }}">{{ activity.0 }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="Day">Day: </label>
+        <input type="text" id="Day" name="Day">
+        <br>
+        <label for="Start_hour">Start Hour: </label>
+        <input type="text" id="Start_hour" name="Start_hour"><br>
+        <label for="End_hour">End Hour: </label>
+        <input type="text" id="End_hour" name="End_hour"><br>
+        <input type="hidden" name="Program_ID" value="{{ program_id }}">
+        <input type="hidden" name="Year" value="{{ year }}">
+        <input type="submit" value="SAVE">
+        <p>{{ error_message }}</p>
+    </form> 
+</body>
+</html>

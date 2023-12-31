@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand d-flex mx-auto justify-content-center">PAYMENT FORM</a>
+    </nav>
+    <br>    
+
+    <form method="post">
+        <label for="paymentDate">Payment Date:</label>
+        <input type="date" id="paymentDate" name="paymentDate" required>
+        <br>
+    
+        <label for="paymentType">Type:</label>
+        <select id="paymentType" name="paymentType" required>
+            <option value="daily">Daily</option>
+            <option value="monthly">Monthly</option>
+            <option value="fine">Fine</option>
+            <option value="excursion">Excursion</option>
+        </select>
+        <br>
+        
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" required>
+        <br>
+    
+        <input id="submit" type="submit" value="PAY">
+    </form>
+    <p>{{ error_message }}</p>
+    <p>{{ exp_amt }}</p>
+</body>
+</html>

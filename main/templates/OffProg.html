@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand d-flex mx-auto justify-content-center">NEW PROGRAM OFFER</a>
+    </nav>
+    <br>    
+<form method="POST" action="{% url 'main:r_program' %}">
+    {% csrf_token %}
+    <label for="Menu_Type">Select Program: </label>
+    <select id="Menu_Type" name="Menu_Type">
+    {% for row in program %}
+        <option value="{{ row.0 }}">{{ row.0 }}</option>
+    {% endfor %}
+    
+        <!-- Add more options as needed -->
+    </select>
+    <br>
+    <label for="MonthlyFee">Monthly Fee: </label>
+    <input type="text" id="MonthlyFee" name="MonthlyFee" required><br>
+    <label for="DailyFee">Daily Fee: </label>
+<input type="text" id="DailyFee" name="DailyFee" required><br>
+<br>
+    <br>
+    <input type="submit" value="SAVE">
+</a>
+</form> 
+</body>
+</html>

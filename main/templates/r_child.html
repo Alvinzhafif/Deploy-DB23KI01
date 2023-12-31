@@ -1,0 +1,46 @@
+<h2>CHILD REGISTRATION FORM</h2>
+<form method="POST" action="{% url 'main:r_child' %}">
+    {% csrf_token %}
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" name="first_name" required><br>
+
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last_name" name="last_name" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br>
+
+    <label for="parent_phone">Parent's Phone Number:</label>
+    <input type="tel" id="parent_phone" name="parent_phone" required><br>
+
+    <label for="address">Address:</label>
+    <textarea id="address" name="address" rows="4" required></textarea><br>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+    </select><br>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required><br>
+
+
+
+    <label for="father_name">Father's Name:</label>
+    <input type="text" id="father_name" name="father_name" required><br>
+
+    <label for="father_occupation">Father's Occupation:</label>
+    <input type="text" id="father_occupation" name="father_occupation" required><br>
+
+    <label for="mother_name">Mother's Name:</label>
+    <input type="text" id="mother_name" name="mother_name" required><br>
+
+    <label for="mother_occupation">Mother's Occupation:</label>
+    <input type="text" id="mother_occupation" name="mother_occupation" required><br>
+
+    <input type="submit" value="Register">
+    <p>{{ error_message }}</p>
+</form>
+
+

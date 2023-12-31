@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand d-flex mx-auto justify-content-center">EXTRACURRICULAR</a>
+    </nav>
+    <br>  
+    <div style="text-align: center;">
+        <a href="{% url 'main:extra_add' %}">
+        <button>Add New Extracurricular</button>
+        </a>
+    </div>  
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Day</th>
+            <th>Hour</th>
+            <th>Operation</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+        <tr>
+            <td>{{ row.0 }}</td>
+            <td>{{ row.1 }}</td>
+            <td>{{ row.2 }}</td>
+            <td><a href="{% url 'main:extra_details' row.3 %}">Detail</a> {% if row.3 not in p_list %} / <a href="{% url 'main:extra_edit' row.3 %}">Edit</a> / <a href="{% url 'main:extra_delete' row.3 %}">Delete</a> {% endif %}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{{ participant }}
+<br>
+<div style="text-align: center;">
+    <a href="{% url 'main:Admin_Dash' %}">
+    <button>Back</button>
+    </a>
+</div>
+
+</body>
+</html>

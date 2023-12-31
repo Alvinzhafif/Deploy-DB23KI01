@@ -1,0 +1,11 @@
+<form action="{% url 'main:show_login' %}" method="POST">
+    {% csrf_token %}
+    <label for="phone_number">Phone number:</label>
+    <input type="phone_number" id="phone_number" name="phone_number"><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    <a href="{% url 'main:User_Dash' %}">
+        <button type="submit">Login</button>
+    </a>
+    <p>{{ error_message }}</p>
+</form> 

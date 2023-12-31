@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand d-flex mx-auto justify-content-center">{{ name }} {{ year }} DETAILS</a>
+    </nav>
+<br>
+<h6>Activity Schedule</h6>
+<a href="{% url 'main:New_ActSched' name=name year=year%}">
+    Add new activity
+</a>
+<br>
+<table>
+    <thead>
+        <tr>
+            <th>Activity Name</th>
+            <th>Day</th>
+            <th>Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+        <tr>
+            <td>{{ row.0 }}</td>
+            <td>{{ row.1 }}</td>
+            <td>{{ row.2 }} - {{ row.3 }}</td>
+        </tr>
+        {% endfor %}
+        <!-- Add more rows as needed -->
+    </tbody>
+</table>
+<br>
+<h6>Menu Schedule</h6>
+<a href="{% url 'main:New_MenuSched' name=name year=year %}">
+    Add new menu
+</a>
+<br>
+<table>
+    <thead>
+        <tr>
+            <th>Menu Name</th>
+            <th>Day</th>
+            <th>Hour</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in menu %}
+        <tr>
+            <td>{{ row.0 }}</td>
+            <td>{{ row.1 }}</td>
+            <td>{{ row.2 }}</td>
+        </tr>
+        {% endfor %}
+        <!-- Add more rows as needed -->
+    </tbody>
+</table>
+<br>
+<div style="text-align: center;">
+    <a href="{% url 'main:Offered_Program' %}">
+    <button>Back</button>
+    </a>
+</div>
+
+</body>
+</html>

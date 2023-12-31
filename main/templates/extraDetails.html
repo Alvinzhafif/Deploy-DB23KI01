@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<p>Extracurricular Name : {{ data.0.0 }} </p> 
+<p>Extracurricular Day : {{ data.0.1 }}</p> 
+<p>Extracurricular Hour : {{ data.0.2 }}</p>
+
+<br>
+<p>Participant: </p>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Class Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in participant %}
+        <tr>
+            <td>{{ row.0 }}</td>
+            <td>{{ row.1 }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<br>
+<div style="text-align: center;">
+    <a href="{% url 'main:extracurricular_page' %}">
+    <button>Back</button>
+    </a>
+</div>
+
+</body>
+</html>

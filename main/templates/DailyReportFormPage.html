@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        #submit {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand d-flex mx-auto justify-content-center">DAILY REPORT FORM</a>
+    </nav>
+    <br>    
+
+    <form method="post">
+        <label for="childName">Child Name :</label>
+        <input type="text" id="childName" name="childName" required>
+        <br>
+
+        <label for="date">Date :</label>
+        <input type="date" id="date" name="date" required>
+        <br>
+
+        <label for="activityReport">Activity Report :</label>
+        <input type="text" id="activityReport" name="activityReport" required>
+        <br>
+
+        <label for="eatingReport">Eating Report :</label>
+        <input type="text" id="eatingReport" name="eatingReport" required>
+        <br>
+
+        <label for="photoLink">Photo Link :</label>
+        <input type="url" id="photoLink" name="photoLink" required>
+        <br>
+
+        <input id="submit" type="submit" value="ADD">
+    </form>
+
+</body>
+</html>

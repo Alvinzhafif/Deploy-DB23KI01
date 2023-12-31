@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        #back a button {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+
+        }
+        .row1 {
+            background-color:aqua;
+        }
+    </style>
+</head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand d-flex mx-auto justify-content-center">CLASS</a>
+        </nav>
+    </body>
+<table>
+    <thead>
+        <tr>
+            <th>Class Name</th>
+            <th>Year</th>
+            <th>Room No.</th>
+            <th>Children List</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row_data in row %}
+        <tr>
+            {% for data in row_data %}
+            <td class="row1">{{ data }}</td>
+            <td><a href="{% url 'main:Children_In_Class_Page' class_name=data.0 year=data.1 program_id=program_id%}"><button>[Children]</button></a></td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div id="back">
+        <a href="{% url 'main:User_Dash' %}"><button>Back</button></a></div>
+
+</html>

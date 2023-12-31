@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand d-flex mx-auto justify-content-center">CHILD LIST</a>
+    </nav>
+    <table>
+        <thead>
+            <tr>
+                <th>Child Name</th>
+                <th>Age</th>
+                <th>Birthday</th>
+                <th>Latest Class Name</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{ row.0.3 }} {{ row.0.4 }}</td>  {# Assuming that the child name is in the second column (index 1) of your data #}
+                <td>{{ row.0.2 }}</td>  {# Assuming that the father's name is in the third column (index 2) of your data #}
+                <td>{{ row.0.6|date:'Y-m-d' }}</td>  {# Assuming that the mother's name is in the fourth column (index 3) of your data #}
+                <td>{{ row.1 }}</td>  {# Accessing the corresponding information from data2 #}
+                <td>{{ row.0.2 }}</td>  {# Assuming that the mother's occupation is in the sixth column (index 5) of your data #}
+            </tr>
+        {% endfor %}
+                </tbody>
+    </table>
+    <br>
+    <div style="text-align: center;">
+        <a href="{% url 'main:Admin_Dash' %}">
+            <button>Back</button>
+        </a>
+    </div>
+</body>
+</html>

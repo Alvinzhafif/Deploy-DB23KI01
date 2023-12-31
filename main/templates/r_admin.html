@@ -1,0 +1,9 @@
+<h2>ADMIN REGISTRATION FORM</h2>
+<form method="POST" action="{% url 'main:r_admin' %}">
+    {% csrf_token %}
+    <label for="phone_number">Phone number:</label>
+    <input type="phone_number" id="phone_number" name="phone_number"><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="submit" value="Submit">
+</form> 

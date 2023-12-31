@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+</head>
+<body>
+
+<h2>CAREGIVER REGISTRATION FORM</h2>
+
+<form method="POST" action="{% url 'main:r_caregiver' %}" id="registrationForm">
+    {% csrf_token %}
+    <!-- Personal Information -->
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" name="first_name" required><br>
+
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last_name" name="last_name" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br>
+
+    <label for="phone_number">Phone Number:</label>
+    <input type="tel" id="phone_number" name="phone_number" required><br>
+
+    <label for="address">Address:</label>
+    <textarea id="address" name="address" rows="4" required></textarea><br>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+    </select><br>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required><br>
+
+    <!-- Additional Information -->
+    <h3>Additional Information</h3>
+
+    <label for="nik">NIK:</label>
+    <input type="text" id="nik" name="nik" required><br>
+
+    <label for="npwp">NPWP:</label>
+    <input type="text" id="npwp" name="npwp" required><br>
+
+    <label for="bank_name">Bank Name:</label>
+    <input type="text" id="bank_name" name="bank_name" required><br>
+
+    <label for="bank_account_number">Bank Account Number:</label>
+    <input type="text" id="bank_account_number" name="bank_account_number" required><br>
+
+    <label for="certificate_count">Number of Certificates:</label>
+    <input type="number" id="certificate_count" name="certificate_count" required><br>
+
+    <!-- Certificate Information -->
+    <h3>Certificate Information</h3>
+<div id="certificates">
+    <!-- Repeat the following fields for each certificate -->
+    <!-- Certificate 1 -->
+    <label for="certificate1_name">Certificate Name:</label>
+    <input type="text" id="certificate1_name" name="certificate1_name" required><br>
+
+    <label for="certificate1_number">Certificate Number:</label>
+    <input type="text" id="certificate1_number" name="certificate1_number" required><br>
+
+    <label for="certificate1_year">Certificate Year:</label>
+    <input type="number" id="certificate1_year" name="certificate1_year" required><br>
+
+    <label for="certificate1_organizer">Certificate Organizer:</label>
+    <input type="text" id="certificate1_organizer" name="certificate1_organizer" required><br>
+</div>
+    <!-- Repeat the above fields for each additional certificate -->
+    <button type="button" id="addCertificate">Add Certificate</button>
+    <!-- Submit Button -->
+    <input type="submit" value="Register">
+</form>
+<p>{{ error_message }}</p>
+<script>
+    let certificateCount = 2; // Initialize certificate count
+
+document.getElementById('addCertificate').addEventListener('click', function() {
+  const certificates = document.getElementById('certificates');
+
+  const newCertificate = document.createElement('div');
+  newCertificate.innerHTML = `
+    <!-- Certificate ${certificateCount} -->
+    <label for="certificate${certificateCount}_name">Certificate Name:</label>
+    <input type="text" id="certificate${certificateCount}_name" name="certificate${certificateCount}_name" required><br>
+
+    <label for="certificate${certificateCount}_number">Certificate Number:</label>
+    <input type="text" id="certificate${certificateCount}_number" name="certificate${certificateCount}_number" required><br>
+
+    <label for="certificate${certificateCount}_year">Certificate Year:</label>
+    <input type="number" id="certificate${certificateCount}_year" name="certificate${certificateCount}_year" required><br>
+
+    <label for="certificate${certificateCount}_organizer">Certificate Organizer:</label>
+    <input type="text" id="certificate${certificateCount}_organizer" name="certificate${certificateCount}_organizer" required><br>
+  `;
+
+  certificates.appendChild(newCertificate);
+  certificateCount++; // Increment certificate count for the next certificate
+  print(certificateCount);
+});
+  </script>
+</body>
+</html>

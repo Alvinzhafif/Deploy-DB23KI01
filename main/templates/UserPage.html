@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <title>User's Dashboard: User's full name</title>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">{{ name }}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <!-- if role is child -->
+            {% if role == 'child' %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'main:DailyRep_Page' name=name %}">Daily Report</a>
+              </li>
+              {% elif role == 'caregiver' %}
+              <!-- if role is caregiver -->
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'main:Class_Page'  %}">Class</a>
+              </li>
+              {% elif role == 'driver' %}
+              <!-- if role is driver -->
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'main:pickup_schedule_page' %}">Pick up Schedule</a>
+              </li>
+              {% endif %}
+              {% if role == 'child' %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Program
+                </a>
+              <!-- if role is child -->
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'main:Program_Page' %}">Current Program Data</a>
+                <a class="dropdown-item" href="{% url 'main:Enrollment_Page' %}">Enroll into new program</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Payment
+                </a>
+                <!-- if role is child -->
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'main:pay_history_user' %}">Payment History List</a>
+                  <a class="dropdown-item" href="{% url 'main:payform' %}">Pay</a>
+                </div>
+              </li>
+          </ul>
+          {% endif %}
+          <form action="{% url 'main:logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger ml-auto">Logout</button>
+        </form>
+        </div>
+      </nav>
+
+    <h6>Name: {{ name }}</h6>
+    <h6>Registered Phone number: {{ phone_number }}</h6>
+    <h6>Address: {{ address }}</h6>
+    <h6>Gender: {{ gender }}</h6>
+    <h6>Date of Birth: {{ birth_date }}</h6>
+    <br>
+    {% if role == 'child' %}
+    <!-- If role is child -->
+    <h6>Father's Name: {{ father_name }}</h6>
+    <h6>Father's Occupation: {{ father_job }}</h6>
+    <h6>Mother's Name: {{ mother_name }}</h6>
+    <h6>Mother's Occupation: {{ mother_job }}</h6>
+    <br>
+    {% elif role == 'caregiver' %}
+    <!-- If role is caregiver -->
+    <h6>NIK: {{ nik }}</h6>
+    <h6>NPWP: {{ npwp }}</h6>
+    <h6>Bank Name: {{ bank_name }}</h6>
+    <h6>Bank Account Number: {{ bank_account }}</h6>
+    <table>
+        <tr>
+            <th>Certificates</th>
+        </tr>
+        {% for certificate in certificate_name %}
+        <tr>
+            <td>{{ certificate }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    {% elif role == 'driver' %}
+    <h6>NIK: {{ nik }}</h6>
+    <h6>NPWP: {{ npwp }}</h6>
+    <h6>Bank Name: {{ bank_name }}</h6>
+    <h6>Bank Account Number: {{ bank_account }}</h6>
+    <h6>Driving License number: {{ driver_license_number }}</h6>
+    <h6>Available working hours:
+      {% for day in driver_day %}
+          {{ day }}{% if not forloop.last %}, {% endif %}
+      {% endfor %}
+  </h6>
+    {% endif %}
+
+
+<!-- Your content goes here -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

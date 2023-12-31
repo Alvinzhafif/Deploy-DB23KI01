@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Admin Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form action="{% url 'main:logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger ml-auto">Logout</button>
+            </form>
+        </div>
+    </nav>
+        
+      <h6>Child List: <a href="{% url 'main:children_page'%}">Link</a></h6>
+      <h6>Staff List: <a href="{% url 'main:Staff_List' %}">Link</a></h6>
+      <h6>Program: <a href="{% url 'main:program_page'%}">Link</a></h6>
+      <h6>Offered Program: <a href="{% url 'main:Offered_Program'%}">Link</a></h6>
+      <h6>Extracurricular: <a href="{% url 'main:extracurricular_page'%}">Link</a></h6>
+      <h6>Menu: <a href="{% url 'main:menu_page'%}">Link</a></h6>
+      <h6>Activity: <a href="{% url 'main:Act_Page'%}">Link</a></h6>
+      <h6>Room List: <a href="{% url 'main:Admin_Room' %}">Link</a></h6>
+      <h6>Payment History: <a href="{% url 'main:pay_history_admin' %}">Link</a></h6>    
+
+
+    
+
+
+<!-- Your content goes here -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

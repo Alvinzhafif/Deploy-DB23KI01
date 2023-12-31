@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+    
+            th, td {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+    
+            th {
+                background-color: #f2f2f2;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand d-flex mx-auto justify-content-center">Program Data</a>
+        </nav>
+    </body>
+    <h6>Program Name: {{ program_data.0.1 }}</h6>
+    <h6>Program Year: {{ program_data.0.2 }}</h6>
+    <h6>Class Name: {{ program_data.0.3 }}</h6>
+    <h6>Caregiver: {{ program_data.0.4 }}</h6>
+    <h6>Enrolled on: {{ program_data.0.7 }}</h6>
+    <h6>Extracurricular taken: {{ program_data.0.8 }} <a href="{% url 'main:ChildExtra' %}">Manage Extracurricular</a></h6>
+    <h6>Shuttle Pick-Up Hour: {{ program_data.0.5 }}</h6>
+    <h6>Activity Schedule: {{ program_data.0.9 }}</h6>
+    <h6>Menu Schedule: {{ program_data.0.10 }}</h6>
+
+    <br>
+    <br>
+    <div style="text-align: center;">
+        <button onclick="goBack()">Back</button>
+    </div>
+    
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</html>

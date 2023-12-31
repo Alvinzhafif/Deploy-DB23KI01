@@ -1,1 +1,1 @@
-web: gunicorn 'group-ichiban.up.railway.app.wsgi'
+web: gunicorn 'limber-zebra.wsgi'

@@ -1,1 +1,1 @@
-web: gunicorn 'limber-zebra.wsgi'
+web: gunicorn 'simibiday.wsgi'

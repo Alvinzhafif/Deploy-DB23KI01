@@ -962,7 +962,7 @@ def Edit_Menu(request):
     return render(request, 'EditMenu.html', context)
 
 def Offered_Program(request):
-    current_year = int(datetime.datetime.now().year)
+    current_year = int(datetime.now().year)
     DB_NAME = 'railway'
     DB_USER = 'postgres'
     DB_PASS = 'C1CfFB-c5fb4feA3eE3FbdECe**-6d36'
@@ -1080,7 +1080,7 @@ def Offer(request, year):
 
 def register_program(request):
     if request.method == "POST":
-        current_year = int(datetime.datetime.now().year)
+        current_year = int(datetime.now().year)
         DB_NAME = 'railway'
         DB_USER = 'postgres'
         DB_PASS = 'C1CfFB-c5fb4feA3eE3FbdECe**-6d36'
